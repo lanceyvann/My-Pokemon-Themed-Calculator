@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="fennekin">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PokéCalc Pokémon calculator featuring Fennekin, Chespin, and Froakie.">
+    <title>PokéCalc - Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-decorations" aria-hidden="true">
+        <span class="decor-circle"></span><span class="decor-square"></span><span class="decor-pokeball"></span>
+        <span class="decor-circle"></span><span class="decor-square"></span><span class="decor-pokeball"></span>
+    </div>
+
+    <div id="custom-cursor" class="custom-cursor" aria-hidden="true"></div>
+    <div id="cursor-trails" class="cursor-trails" aria-hidden="true"></div>
+
+    <div class="calc-container">
+        <header class="app-header">
+            <button type="button" id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle sidebar" aria-controls="sidebar" aria-expanded="false">☰</button>
+            <a href="calculator.html" class="brand">
+                <span class="brand-icon" aria-hidden="true">◉</span>
+                <div class="brand-text"><h1>PokéCalc</h1><p>Pokémon Calculator</p></div>
+            </a>
+            <div id="loader" class="loader" aria-hidden="true" hidden><div class="pokeball"></div></div>
+        </header>
+
+        <div class="app-layout">
+          <aside id="sidebar" class="sidebar">
+                <nav class="sidebar-nav" aria-label="Main navigation">
+                    <h2 class="sidebar-heading">MENU</h2>
+                    <a href="calculator.html" class="nav-button active" aria-current="page">Calculator</a>
+                    <a href="pokemonStats.html" class="nav-button">Pokémon Stats</a>
+                    <a href="pokemonSelection.html" class="nav-button">Choose Your Pokémon</a>
+                </nav>
+                <div class="sidebar-footer"><p>PokéCalc</p><span>KALOS EDITION</span></div>
+            </aside> 
+
+            <main id="main" class="main-content">
+                <section id="calculator-page" class="page" aria-labelledby="calculator-heading">
+                    <div class="page-heading"><h2 id="calculator-heading">Calculator</h2><p>Ready for your next calculation?</p></div>
+
+                    <section class="theme-section" aria-labelledby="theme-heading">
+                        <div class="section-heading"><h3 id="theme-heading">Choose a Theme</h3><p>Pick your Pokémon partner.</p></div>
+                        <div class="theme-options" role="group" aria-label="Pokémon themes">
+                            <button type="button" class="theme-button active" aria-label="Fennekin theme" aria-pressed="true">
+                              <img src="misc/fennekin.png" alt="" class="theme-avatar"><span>Fennekin</span></button>
+                            <button type="button" class="theme-button" aria-label="Chespin theme" aria-pressed="false">
+                              <img src="misc/chespin.png" alt="" class="theme-avatar"><span>Chespin</span></button>
+                            <button type="button" class="theme-button" aria-label="Froakie theme" aria-pressed="false">
+                              <img src="misc/froakie.png" alt="" class="theme-avatar"><span>Froakie</span></button>
+                        </div>
+                    </section>
+
+                    <section class="partner-section" aria-label="Active Pokémon">
+                        <div class="partner-avatar"><img id="active-avatar" src="misc/fennekin.png" alt="Fennekin"></div>
+                        <div class="partner-info"><p class="partner-label">YOUR PARTNER</p><h2 id="active-pokemon">Fennekin</h2><p id="partner-message">Hotdog</p></div>
+                    </section>
+
+                    <section id="calc-box" class="calculator" aria-labelledby="calc-title">
+                        <div class="calculator-heading"><h3 id="calc-title">PokéCalc</h3><span class="calculator-status">READY</span></div>
+                        <label for="display-screen" class="visually-hidden">Calculator display</label>
+                        <input type="text" id="display-screen" value="0" readonly aria-live="polite" aria-atomic="true">
+
+                        <div class="button-grid" role="group" aria-label="Calculator keypad">
+                            <button type="button" class="btn-action" onclick="clearDisplay()">AC</button>
+                            <button type="button" class="btn-action" onclick="changeSign()">+/-</button>
+                            <button type="button" class="btn-action" onclick="deleteLast()">DEL</button>
+                            <button type="button" class="btn-operator" onclick="appendGiven('+')">+</button>
+                            <button type="button" onclick="appendGiven('7')">7</button>
+                            <button type="button" onclick="appendGiven('8')">8</button>
+                            <button type="button" onclick="appendGiven('9')">9</button>
+                            <button type="button" class="btn-operator" onclick="appendGiven('-')">−</button>
+
+                            <button type="button" onclick="appendGiven('4')">4</button>
+                            <button type="button" onclick="appendGiven('5')">5</button>
+                            <button type="button" onclick="appendGiven('6')">6</button>
+                            <button type="button" class="btn-operator" onclick="appendGiven('*')">×</button>
+
+                            <button type="button" onclick="appendGiven('1')">1</button>
+                            <button type="button" onclick="appendGiven('2')">2</button>
+                            <button type="button" onclick="appendGiven('3')">3</button>
+                            <button type="button" class="btn-operator" onclick="appendGiven('/')">÷</button>
+
+                            <button type="button" onclick="appendGiven('.')">.</button>
+                            <button type="button" onclick="appendGiven('0')">0</button>
+                            <button type="button" id="equals" class="btn-equals" onclick="calculate()">=</button>
+                        </div>
+
+                    </section>
+                </section>
+            </main>
+        </div>
+
+        <footer class="app-footer"><p>KALOS STARTER EDITION</p></footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
